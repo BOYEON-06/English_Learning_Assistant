@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Assistant</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>OCR 변환 결과</h1>
+        <textarea id="userTextarea" rows="20" cols="80">{{ ocr_text }}</textarea>
+        <div class="buttonContainer">
+            <button type="button" class="submitButton" id="not_modify">수정 사항 없음</button>
+            <button type="button" class="submitButton" id="modify">수정 완료</button>
+        </div>  
+    </div>
+    <script>
+        // document.getElementById('modify').addEventListener('click', function() {
+                // userTextarea 값을 ocr_result 값으로 할당 
+        // })
+    </script>
+</body>
+</html>

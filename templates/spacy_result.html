@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clause Analysis Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f8f8f8;
+    }
+    h2 {
+      background: #333;
+      color: white;
+      padding: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .section {
+      margin-bottom: 60px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 English Clause Analysis Results</h1>
+
+  <div id="content"></div>
+
+  <script>
+    fetch('all_sentences.json')
+      .then(res => res.json())
+      .then(json => {
+        const container = document.getElementById('content');
+
+        json.results.forEach((result, idx) => {
+          const section = document.createElement('div');
+          section.className = 'section';
+
+          // 제목 및 문장 표시
+          section.innerHTML = `
+            <h2>Sentence ${idx + 1}</h2>
+            <p><strong>Original:</strong> ${result.sentence}</p>
+          `;
+
+          // Clause Tree 출력
+          const clauseTable = document.createElement('table');
+          clauseTable.innerHTML = `
+            <caption><strong>Clause Tree</strong></caption>
+            <thead>
+              <tr>
+                <th>ID</th><th>Text</th><th>Type</th><th>Role</th>
+                <th>Verb</th><th>Subject</th><th>Connector</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${result.clause_tree.map(clause => `
+                <tr>
+                  <td>${clause.id}</td>
+                  <td>${clause.text.trim()}</td>
+                  <td>${clause.type}</td>
+                  <td>${clause.role}</td>
+                  <td>${clause.main_verb || ""}</td>
+                  <td>${clause.subject || ""}</td>
+                  <td>${clause.connector || ""}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          `;
+          section.appendChild(clauseTable);
+
+          // Verb NP Roles 출력
+          const verbNPPre = document.createElement('pre');
+          verbNPPre.textContent = `verb_np_roles:\n${JSON.stringify(result.verb_np_roles, null, 2)}`;
+          section.appendChild(verbNPPre);
+
+          container.appendChild(section);
+        });
+      });
+  </script>
+</body>
+</html>
+

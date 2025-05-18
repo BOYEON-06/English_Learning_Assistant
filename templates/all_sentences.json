@@ -1,0 +1,300 @@
+{
+  "total_sentences": 3,
+  "results": [
+    {
+      "sentence": "The man who came yesterday said that he would return when the weather clears.\n    ",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "The man",
+          "start_idx": 0,
+          "end_idx": 2,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": "said",
+          "start_idx": 5,
+          "end_idx": 6,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "said",
+          "subject": "man",
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": ".\n    ",
+          "start_idx": 14,
+          "end_idx": 16,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 3,
+          "text": "who came yesterday",
+          "start_idx": 2,
+          "end_idx": 5,
+          "type": "relative",
+          "role": "relative_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "came",
+          "subject": "who",
+          "connector": "who"
+        },
+        {
+          "id": 4,
+          "text": "he would return",
+          "start_idx": 7,
+          "end_idx": 10,
+          "type": "nominal",
+          "role": "nominal_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "return",
+          "subject": "he",
+          "connector": "that"
+        },
+        {
+          "id": 5,
+          "text": "when the weather clears",
+          "start_idx": 10,
+          "end_idx": 14,
+          "type": "adverbial",
+          "role": "adverbial_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "clears",
+          "subject": "weather",
+          "connector": "when"
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "said": {
+            "subject": [
+              "The man"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {},
+        "3": {
+          "came": {
+            "subject": [
+              "who"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "4": {
+          "return": {
+            "subject": [
+              "he"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "5": {
+          "clears": {
+            "subject": [
+              "the weather"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 1
+    },
+    {
+      "sentence": "I love to read books that challenge my understanding of the world.\n    ",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "I love",
+          "start_idx": 0,
+          "end_idx": 2,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "love",
+          "subject": "I",
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": ".\n    ",
+          "start_idx": 12,
+          "end_idx": 14,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": "to read books",
+          "start_idx": 2,
+          "end_idx": 5,
+          "type": "nominal",
+          "role": "nominal_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "read",
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 3,
+          "text": "that challenge my understanding of the world",
+          "start_idx": 5,
+          "end_idx": 12,
+          "type": "relative",
+          "role": "relative_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "challenge",
+          "subject": "that",
+          "connector": "that"
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "love": {
+            "subject": [
+              "I"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {
+          "read": {
+            "subject": [],
+            "direct_object": [
+              "books"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "3": {
+          "challenge": {
+            "subject": [
+              "that"
+            ],
+            "direct_object": [
+              "my understanding"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 2
+    },
+    {
+      "sentence": "Although he was tired, John finished the project before the deadline.\n    ",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": ", John finished the project before the deadline.\n    ",
+          "start_idx": 4,
+          "end_idx": 14,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "finished",
+          "subject": "John",
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": "he was tired",
+          "start_idx": 1,
+          "end_idx": 4,
+          "type": "adverbial",
+          "role": "adverbial_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": "Although"
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "finished": {
+            "subject": [
+              "John"
+            ],
+            "direct_object": [
+              "the project"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {
+          "was": {
+            "subject": [
+              "he"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 3
+    }
+  ]
+}
