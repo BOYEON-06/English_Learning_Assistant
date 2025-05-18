@@ -1,0 +1,89 @@
+/* 전체 레이아웃 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* 이미지 업로드 컨테이너 */
+  .container {
+    width: 1000px;
+    padding: 100px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  form {
+    text-align: center;
+  }
+
+  /* 버튼 스타일 */
+  .button label {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button label:hover {
+    background-color: #45a049;
+  }
+  
+  /* 숨겨진 파일 입력 */
+  input[type="file"] {
+    display: none;
+  }
+  
+  /* 파일 이름 표시 */
+  .fileContainer {
+    margin-top: 10px;
+  }
+  
+  .fileInput {
+    text-align: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* SUBMIT 버튼 */
+  .submitButton button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* 이미지 보여주는 영역 */
+  .image-show {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .image-show img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottm: 450px;
+  }
+  
