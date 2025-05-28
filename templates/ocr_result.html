@@ -17,9 +17,34 @@
         </div>  
     </div>
     <script>
-        // document.getElementById('modify').addEventListener('click', function() {
-                // userTextarea 값을 ocr_result 값으로 할당 
-        // })
+        // userTextarea 값을 ocr_result 값으로 할당 
+        document.getElementById('modify').addEventListener('click', async() => {
+            const textValue = document.getElementById('userTextarea').value;
+
+            try {
+                const response = await fetch('/ocr_result_modify', {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({text: textValue})
+            });
+
+            if (response.ok) {
+                window.location.href = '/spacy_analy';
+            } else {
+                alert("Sever error: " + response.statusText);
+            }
+
+        } catch (error) {
+            alert("요청 실패: " + error.message);
+        }
+    });
+
+        document.getElementById('not_modify').addEventListener('click', async() => {
+            window.location.href = '/spacy_analy';
+
+        });
+
+        
     </script>
 </body>
 </html>
