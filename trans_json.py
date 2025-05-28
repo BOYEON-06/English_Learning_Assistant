@@ -104,14 +104,13 @@ def analyze_multiple_sentences(text, output_path="output.json"):
         json.dump(final_result, f, ensure_ascii=False, indent=2)
     
     print(f"✅ 전체 분석 결과가 '{output_path}'에 저장되었습니다.")
-    return final_result
+    return final_result 
+    # json파일(분석결과)를 DB 저장 후 바로 최종 UI 구현(final_result.html)과 이어지게 개발 예정
 
 if __name__ == "__main__":
-    # 직접 문장 입력하여 분석
-    input_text = """The man who came yesterday said that he would return when the weather clears.
-    I love to read books that challenge my understanding of the world.
-    Although he was tired, John finished the project before the deadline.
-    """
+
+    def spacy_trans(ocr_text):
+        input_text = ocr_text
     
     # 분석 및 저장
     analyze_multiple_sentences(input_text, "all_sentences.json")
