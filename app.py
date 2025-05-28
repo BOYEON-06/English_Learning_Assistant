@@ -1,4 +1,5 @@
 import os
+from trans_json import spacy_trans
 from flask import Flask, request, render_template, jsonify, url_for
 from werkzeug.utils import secure_filename
 
@@ -44,6 +45,28 @@ def ocr_result():
      text = ocr_results.get('text', '변환된 텍스트가 없습니다.')
      return render_template('ocr_result.html', ocr_text=text)
 
+# ocr_result 값이 수정되었을 때 재할당
+@app.route('/ocr_result_modify', methods=["POST"])
+def ocr_result_modify():
+     data = request.get_json()
+     text = data.get('text', '')
+     ocr_results['text'] = text
+     return jsonify({'status': 'success'})
+
+
+# ocr_result 값을 바탕으로 spacy 분석 시작
+@app.route('/spacy_analy')
+def spacy_analy():
+     text = ocr_results.get('text', '수정된 텍스트가 없습니다.')
+     result = spacy_trans(text)
+     return result
+
+# @app.route('/final_result')
+# def final_result():
+#      text = ocr_results.get('text', '수정된 텍스트가 없습니다.')
+#      return render_template('final_result.html', ocr_text=text)
+
+     
 # @app.route("/all_sentences.json")
 # def data():
 #      return send_from_directory("static", "all_sentences.json")
