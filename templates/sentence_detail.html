@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>English_Learning_Assistant</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    /* 전체 페이지 스타일 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 박스들을 감싸는 컨테이너 */
+    .container {
+      width: 1000px;
+      display: flex;
+      gap: 20px;
+      padding: 50px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 각각의 박스 스타일 */
+    .box {
+      flex: 1;
+      height: 600px;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 12px;
+      box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .left-box {
+      background-color: #d2ffcc;
+      /* 연한 하늘색 */
+    }
+
+    .right-box {
+      background-color: #ffcefb;
+      /* 연한 아이보리 */
+    }
+
+    .content {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    .sentence-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer
+    }
+
+    .label-container {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+
+    /* .main-verb {
+      color: red;
+      font-weight: bold;
+    } */
+    .main-verb {
+      background-color: yellow;
+      font-weight: bold;
+    }
+
+    .subject {
+      background-color: #91d5ff;
+    }
+
+    .direct-object {
+      background-color: #99ffa0;
+    }
+
+    .indirect-object {
+      background-color: #f57979;
+    }
+
+    .other-role {
+      background-color: #bd9bfb;
+    }
+
+    /* 절 밑줄 강조 */
+    .clause-underline {
+      border-bottom: 2px solid;
+      /* 색깔은 인라인 스타일에서 제어 */
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* tooltip 스타일은 동일 */
+    .clause-underline::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: black;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 1000;
+    }
+
+    .clause-underline:hover::after {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* #tree {
+      width: 100%;
+      height: 600px;
+    }
+
+    .node circle {
+      fill: #87CEEB;
+      stroke: #333;
+      stroke-width: 1.5px;
+    }
+
+    .node text {
+      font: 12px sans-serif;
+      fill: #333;
+    }
+
+    .link {
+      fill: none;
+      stroke: #999;
+      stroke-opacity: 0.6;
+      stroke-width: 1.5px;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box left-box">
+      <div class="content">
+        <h3>영문 자료</h3>
+          {% for sentence in sentences %}
+          <div style="margin-bottom: 10px;">
+          <button class="sentence-button" id="sentence-btn-{{ loop.index }}">{{ loop.index }}</button>
+          {{ sentence }}
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="box right-box">
+      <div class="content">
+        <h3>{{ idx }}번 문장 분석</h3>
+        <div id="resultSentence"></div>
+        <p></p>
+        <div class="label-container">
+          <div class="main-verb">동사</div>
+          <div class="subject ">주어</div>
+          <div class="direct-object">직접목적어</div>
+          <div class="indirect-object">간접목적어</div>
+          <div class="other-role">기타(장소, 시간, 수단)</div>
+        </div>
+        <p></p>
+        <div class="translated">{{ result.translated }}</div>
+        <p></p>
+        <div id="tree"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", ()=>{
+      const numSentences = Number("{{ sentences|length }}");
+      for (let i = 1; i < numSentences + 1; i++) {
+        const btn = document.getElementById(`sentence-btn-${i}`);
+        btn.addEventListener("click", () => {
+          window.location.href = `/sentence/${i}`
+        });
+      }
+    });
+
+    const data = {{ result| tojson }};
+
+    const sentence = data.sentence;
+    const mainVerbs = data.clause_tree
+      .map(c => c.main_verb)
+      .filter(v => v !== null) // null 제거 
+      .map(v => v.toLowerCase());
+
+    let highlightedSentence = sentence;
+
+    const clauseRoleColors = {
+      main: 'red',
+      relative_clause: 'blue',
+      nominal_clause: 'green',
+      adverbial_clause: 'orange',
+    };
+
+    const clauseRoleNames = {
+      main: '주절',
+      relative_clause: '관계절',
+      nominal_clause: '명사절',
+      adverbial_clause: '부사절',
+    };
+
+    // 긴 텍스트부터 매칭되도록 정렬
+    const clauseTexts = [...data.clause_tree]
+      .map(c => ({ text: c.text, type: c.role || 'main' }))
+      .sort((a, b) => b.text.length - a.text.length);
+
+    for (const { text, type } of clauseTexts) {
+      let roleName = clauseRoleNames[type] || '주절 (main)';
+      roleName = roleName.replace(/\n/g, ' ').replace(/["']/g, '').trim();
+      if (roleName.length > 50) {
+        roleName = roleName.slice(0, 47) + '...';
+      }
+
+      const color = clauseRoleColors[type] || 'red';
+
+      const escaped = text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(escaped, 'gi');
+
+      highlightedSentence = highlightedSentence.replace(
+        regex,
+        `<span class="clause-underline" style="border-bottom-color: ${color};" data-tooltip="${roleName}">${text}</span>`
+      );
+    }
+
+    // 2. 명사구 역할 하이라이팅
+    const roleColors = {
+      subject: 'subject',
+      direct_object: 'direct-object',
+      indirect_object: 'indirect-object',
+      others: 'other-role'
+    };
+
+    const phraseRoles = [];
+    for (const clauseId in data.verb_np_roles) {
+      const verbs = data.verb_np_roles[clauseId];
+      for (const verb in verbs) {
+        const roles = verbs[verb];
+        for (const role of Object.keys(roles)) {
+          for (const phrase of roles[role]) {
+            phraseRoles.push({
+              text: phrase,
+              lower: phrase.toLowerCase(),
+              role: role
+            });
+          }
+        }
+      }
+    }
+
+    // 긴 명사구가 먼저 치환되도록 정렬
+    phraseRoles.sort((a, b) => b.text.length - a.text.length);
+
+    // 명사구 하이라이팅 (정규식 이용)
+    for (const { text, role } of phraseRoles) {
+      const escaped = text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b(${escaped})\\b`, 'gi');
+      highlightedSentence = highlightedSentence.replace(
+        regex,
+        `<span class="${roleColors[role]}">$1</span>`
+      );
+    }
+
+    // 3. 메인 동사 하이라이트
+    const words = highlightedSentence.split(/(\s+|[,.\n]+)/).map(word => {
+      const cleanWord = word.replace(/[.,]/g, '').toLowerCase();
+      if (mainVerbs.includes(cleanWord)) {
+        return `<span class="main-verb">${word}</span>`;
+      }
+      return word;
+    }).join('');
+
+    document.getElementById('resultSentence').innerHTML = words;
+  </script>
+</body>
+
+</html>

@@ -29,7 +29,7 @@
             });
 
             if (response.ok) {
-                window.location.href = '/spacy_analy';
+                window.location.href = '/sentence';
             } else {
                 alert("Sever error: " + response.statusText);
             }
@@ -40,7 +40,7 @@
     });
 
         document.getElementById('not_modify').addEventListener('click', async() => {
-            window.location.href = '/spacy_analy';
+            window.location.href = '/sentence';
 
         });
 

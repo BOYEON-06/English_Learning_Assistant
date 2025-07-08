@@ -1,10 +1,18 @@
+# Render.com + Netlify: 배포 예정 방안
+# venv 환경 활성화 > source venv/bin/activate
+
 import os
 from trans_json import spacy_trans
-from flask import Flask, request, render_template, jsonify, url_for
+from flask import Flask, request, render_template, jsonify, url_for, redirect, session, json
+from trans_json import analyze_multiple_sentences
 from werkzeug.utils import secure_filename
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads' 
+app.secret_key = os.getenv("SECRET_KEY")
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def allowed_file(filename):
@@ -12,6 +20,13 @@ def allowed_file(filename):
 
 # OCR 결과 저장용 
 ocr_results = {} 
+
+# 영 -> 한 해석 결과 저장용
+
+# # LibreTranslateAPI 영 -> 한 해석 결과 
+# def get_ko_translated(ko_text):
+#      session['translated'] = ko_text
+#      return redirect(url_for('ko_trans_page'))
 
 @app.route('/', methods=["GET", "POST"])
 def main():
@@ -53,13 +68,42 @@ def ocr_result_modify():
      ocr_results['text'] = text
      return jsonify({'status': 'success'})
 
-
 # ocr_result 값을 바탕으로 spacy 분석 시작
-@app.route('/spacy_analy')
-def spacy_analy():
-     text = ocr_results.get('text', '수정된 텍스트가 없습니다.')
-     result = spacy_trans(text)
-     return result
+# @app.route('/spacy_analy')
+# def spacy_analy():
+#      text = ocr_results.get('text', '수정된 텍스트가 없습니다.')
+#      result = spacy_trans(text)
+#      return result
+
+def join_translated_senteces(final_result):
+     translated_list = [res.get("translated", "") for res in final_result.get("results", [])]
+     joined_text = " ".join(translated_list)
+     return joined_text
+
+@app.route('/sentence')
+def sentence():
+     text = ocr_results.get('text', '변환된 텍스트가 없습니다.')
+     final_result = analyze_multiple_sentences(text)
+
+     session['analysis'] = json.dumps(final_result["results"])
+
+     translated_text = join_translated_senteces(final_result)
+     sentence_list = [item["sentence"] for item in final_result["results"]]
+     return render_template('ko_trans_page.html', translated=translated_text, sentences=sentence_list)
+
+@app.route('/sentence/<int:idx>')
+def sentence_detail(idx):
+     analysis_json = session.get('analysis')
+     if not analysis_json:
+          return "spaCy 분석 결과를 찾을 수 없음", 400
+     
+     analysis_data = json.loads(analysis_json)
+
+     sentence_list = [item["sentence"] for item in analysis_data]
+     result = analysis_data[idx - 1]
+     print(result)
+     return render_template('sentence_detail.html', result=result, idx=idx, sentences=sentence_list)
+
 
 # @app.route('/final_result')
 # def final_result():
@@ -72,4 +116,4 @@ def spacy_analy():
 #      return send_from_directory("static", "all_sentences.json")
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=8000, debug=True)

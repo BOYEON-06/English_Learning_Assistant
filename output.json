@@ -1,0 +1,493 @@
+{
+  "total_sentences": 5,
+  "results": [
+    {
+      "sentence": "Urban delivery vehicles can be adapted to better suit the\ndensity of urban distribution, which often involves smaller\nvehicles such as vans, including bicycles.",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "Urban delivery vehicles can be adapted",
+          "start_idx": 0,
+          "end_idx": 6,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "adapted",
+          "subject": "vehicles",
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": ".",
+          "start_idx": 28,
+          "end_idx": 29,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": "to better suit the\ndensity of urban distribution,",
+          "start_idx": 6,
+          "end_idx": 16,
+          "type": "nominal",
+          "role": "nominal_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "suit",
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 3,
+          "text": "which often involves smaller\nvehicles such as vans, including bicycles",
+          "start_idx": 16,
+          "end_idx": 28,
+          "type": "relative",
+          "role": "relative_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "involves",
+          "subject": "which",
+          "connector": "which"
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "adapted": {
+            "subject": [
+              "Urban delivery vehicles"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {
+          "suit": {
+            "subject": [],
+            "direct_object": [
+              "the\ndensity"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "3": {
+          "involves": {
+            "subject": [
+              "which"
+            ],
+            "direct_object": [
+              "smaller\nvehicles"
+            ],
+            "indirect_object": [],
+            "others": []
+          },
+          "including": {
+            "subject": [],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": [
+              "bicycles"
+            ]
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 1
+    },
+    {
+      "sentence": "The latter have the\npotential to become a preferred ‘last-mile’ vehicle, particularly\nin high-density and congested areas.",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "The latter have the\npotential",
+          "start_idx": 0,
+          "end_idx": 6,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "have",
+          "subject": "latter",
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": ".",
+          "start_idx": 26,
+          "end_idx": 27,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": "to become a preferred ‘last-mile’ vehicle, particularly\nin high-density and congested areas",
+          "start_idx": 6,
+          "end_idx": 26,
+          "type": "adjectival",
+          "role": "adjectival_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "become",
+          "subject": null,
+          "connector": null
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "have": {
+            "subject": [],
+            "direct_object": [
+              "the\npotential"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {
+          "become": {
+            "subject": [],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": [
+              "a preferred ‘last-mile’ vehicle"
+            ]
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 2
+    },
+    {
+      "sentence": "In locations where\nbicycle use is high, such as the Netherlands, delivery bicycles\nare also used to carry personal cargo (e.g. groceries).",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "In locations",
+          "start_idx": 0,
+          "end_idx": 2,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": "are also used",
+          "start_idx": 17,
+          "end_idx": 20,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "used",
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": ".",
+          "start_idx": 28,
+          "end_idx": 29,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 3,
+          "text": "where\nbicycle use is high, such as the Netherlands, delivery bicycles\n",
+          "start_idx": 2,
+          "end_idx": 17,
+          "type": "relative",
+          "role": "relative_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": "where"
+        },
+        {
+          "id": 4,
+          "text": "to carry personal cargo (e.g. groceries)",
+          "start_idx": 20,
+          "end_idx": 28,
+          "type": "nominal",
+          "role": "nominal_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "carry",
+          "subject": null,
+          "connector": null
+        }
+      ],
+      "verb_np_roles": {
+        "0": {},
+        "1": {},
+        "2": {},
+        "3": {
+          "is": {
+            "subject": [
+              "bicycle use"
+            ],
+            "direct_object": [],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "4": {
+          "carry": {
+            "subject": [],
+            "direct_object": [
+              "personal cargo"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 3
+    },
+    {
+      "sentence": "Due to\ntheir low acquisition and maintenance costs, cargo bicycles\nconvey much potential in developed and developing countries\nalike, such as the becak (a three-wheeled bicycle) in Indonesia.\nServices using electrically assisted delivery tricycles have\nbeen successfully implemented in France and are gradually\nbeing adopted across Europe for services as varied as parcel\nand catering deliveries.",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "Due to\ntheir low acquisition and maintenance costs, cargo bicycles\nconvey much potential in developed and developing countries\nalike, such as the becak (a three-wheeled bicycle) in Indonesia.\nServices",
+          "start_idx": 0,
+          "end_idx": 40,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "convey",
+          "subject": "bicycles",
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": "have\nbeen successfully implemented in France and are gradually\nbeing adopted across Europe for services as varied as parcel\nand catering deliveries.",
+          "start_idx": 45,
+          "end_idx": 71,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": "using electrically assisted delivery tricycles",
+          "start_idx": 40,
+          "end_idx": 45,
+          "type": "adjectival",
+          "role": "adjectival_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "using",
+          "subject": null,
+          "connector": null
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "convey": {
+            "subject": [
+              "cargo bicycles"
+            ],
+            "direct_object": [
+              "much potential",
+              "Services"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {
+          "using": {
+            "subject": [],
+            "direct_object": [
+              "electrically assisted delivery tricycles"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [
+        {
+          "type": "NOUN",
+          "first": "acquisition",
+          "conjunction": "and",
+          "second": "maintenance"
+        },
+        {
+          "type": "VERB",
+          "first": "convey",
+          "conjunction": ",",
+          "second": "implemented"
+        },
+        {
+          "type": "VERB",
+          "first": "implemented",
+          "conjunction": "and",
+          "second": "adopted"
+        },
+        {
+          "type": "NOUN",
+          "first": "parcel",
+          "conjunction": "and",
+          "second": "catering"
+        }
+      ],
+      "sentence_number": 4
+    },
+    {
+      "sentence": "Using bicycles as cargo vehicles is\nparticularly encouraged when combined with policies that\nrestrict motor vehicle access to specific areas of a city, such as\ndowntown or commercial districts, or with the extension of\ndedicated bike lanes.\n",
+      "clause_tree": [
+        {
+          "id": 0,
+          "text": "Using bicycles as cargo vehicles is\nparticularly encouraged",
+          "start_idx": 0,
+          "end_idx": 9,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": "encouraged",
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 1,
+          "text": ".\n",
+          "start_idx": 43,
+          "end_idx": 45,
+          "type": "main",
+          "role": "main",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [],
+          "main_verb": null,
+          "subject": null,
+          "connector": null
+        },
+        {
+          "id": 2,
+          "text": "when combined with policies that\nrestrict motor vehicle access to specific areas of a city, such as\ndowntown or commercial districts, or with the extension of\ndedicated bike lanes",
+          "start_idx": 9,
+          "end_idx": 43,
+          "type": "adverbial",
+          "role": "adverbial_clause",
+          "depth": 0,
+          "parent_id": null,
+          "children_ids": [
+            3
+          ],
+          "main_verb": "combined",
+          "subject": null,
+          "connector": "when"
+        },
+        {
+          "id": 3,
+          "text": "that\nrestrict motor vehicle access to specific areas of a city, such as\ndowntown or commercial districts",
+          "start_idx": 13,
+          "end_idx": 33,
+          "type": "relative",
+          "role": "relative_clause",
+          "depth": 1,
+          "parent_id": 2,
+          "children_ids": [],
+          "main_verb": "restrict",
+          "subject": "that",
+          "connector": "that"
+        }
+      ],
+      "verb_np_roles": {
+        "0": {
+          "Using": {
+            "subject": [],
+            "direct_object": [
+              "bicycles"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "1": {},
+        "2": {
+          "restrict": {
+            "subject": [
+              "that"
+            ],
+            "direct_object": [
+              "motor vehicle access"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        },
+        "3": {
+          "restrict": {
+            "subject": [
+              "that",
+              "restrict (as that)"
+            ],
+            "direct_object": [
+              "motor vehicle access"
+            ],
+            "indirect_object": [],
+            "others": []
+          }
+        }
+      },
+      "implied_subjects": {},
+      "coord_structures": [],
+      "sentence_number": 5
+    }
+  ]
+}
