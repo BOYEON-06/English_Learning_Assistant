@@ -1,0 +1,7 @@
+venv/
+*.dylib
+*.so
+*.pyd
+*.whl
+*.tar.gz
+*.egg-info/
